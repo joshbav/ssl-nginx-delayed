@@ -1,0 +1,56 @@
+{
+  "backoffFactor": 1.15,
+  "backoffSeconds": 1,
+  "container": {
+    "docker": {
+      "forcePullImage": false,
+      "image": "nginx",
+      "parameters": [],
+      "privileged": false
+    },
+    "portMappings": [
+      {
+        "containerPort": 80,
+        "hostPort": 0,
+        "labels": {},
+        "name": "http",
+        "protocol": "tcp",
+        "servicePort": 10000
+      },
+      {
+        "containerPort": 0,
+        "hostPort": 0,
+        "labels": {},
+        "protocol": "tcp",
+        "servicePort": 10001
+      }
+    ],
+    "type": "DOCKER",
+    "volumes": []
+  },
+  "cpus": 0.1,
+  "deployments": [],
+  "disk": 0,
+  "executor": "",
+  "gpus": 0,
+  "id": "/ssl-test",
+  "instances": 1,
+  "killSelection": "YOUNGEST_FIRST",
+  "labels": {},
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 1280,
+  "networks": [
+    {
+      "mode": "container/bridge"
+    }
+  ],
+  "requirePorts": false,
+  "unreachableStrategy": {
+    "expungeAfterSeconds": 0,
+    "inactiveAfterSeconds": 0
+  },
+  "upgradeStrategy": {
+    "maximumOverCapacity": 1,
+    "minimumHealthCapacity": 1
+  }
+}

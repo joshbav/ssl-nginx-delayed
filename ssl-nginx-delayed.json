@@ -1,0 +1,89 @@
+{
+  "env": {
+    "STARTUP_DELAY_SECONDS": "15",
+    "RUN_TIME_SECONDS": "240"
+  },
+  "labels": {
+    "HAPROXY_GROUP": "external",
+    "HAPROXY_0_VHOST": "ec2-54-187-52-242.us-west-2.compute.amazonaws.com",
+    "TERM": "xterm"
+  },
+  "id": "/ssl-nginx-delayed",
+  "backoffFactor": 1.15,
+  "backoffSeconds": 1,
+  "container": {
+    "portMappings": [
+      {
+        "containerPort": 80,
+        "hostPort": 0,
+        "protocol": "tcp",
+        "servicePort": 10000,
+        "name": "http"
+      },
+      {
+        "containerPort": 443,
+        "hostPort": 0,
+        "protocol": "tcp",
+        "servicePort": 10001,
+        "name": "https"
+      }
+    ],
+    "type": "MESOS",
+    "volumes": [],
+    "docker": {
+      "image": "joshbav/ssl-nginx-delayed:latest",
+      "forcePullImage": false,
+      "parameters": []
+    }
+  },
+  "cpus": 0.1,
+  "disk": 0,
+  "healthChecks": [
+    {
+      "gracePeriodSeconds": 45,
+      "intervalSeconds": 5,
+      "maxConsecutiveFailures": 2,
+      "portIndex": 0,
+      "timeoutSeconds": 2,
+      "delaySeconds": 15,
+      "protocol": "MESOS_HTTP",
+      "path": "/healthy.html"
+    }
+  ],
+  "instances": 5,
+  "maxLaunchDelaySeconds": 3600,
+  "mem": 256,
+  "gpus": 0,
+  "networks": [
+    {
+      "mode": "container/bridge"
+    }
+  ],
+  "readinessChecks": [
+    {
+      "name": "readinessCheck",
+      "protocol": "HTTP",
+      "path": "/healthy.html",
+      "portName": "http",
+      "intervalSeconds": 2,
+      "timeoutSeconds": 1,
+      "httpStatusCodesForReady": [
+        200
+      ],
+      "preserveLastResponse": false
+    }
+  ],
+  "requirePorts": false,
+  "taskKillGracePeriodSeconds": 60,
+  "upgradeStrategy": {
+    "maximumOverCapacity": 1,
+    "minimumHealthCapacity": 1
+  },
+  "killSelection": "YOUNGEST_FIRST",
+  "unreachableStrategy": {
+    "inactiveAfterSeconds": 0,
+    "expungeAfterSeconds": 0
+  },
+  "fetch": [],
+  "constraints": []
+}
