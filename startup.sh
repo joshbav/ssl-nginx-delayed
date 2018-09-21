@@ -60,7 +60,8 @@ then
    RUN_TIME_SECONDS=180
 fi
 
-EXTRA_RUN_TIME=$(cat /dev/urandom | tr -dc '0-9' | fold -w 2 | head -n 1)
+# Using 1-9 to avoid leading 0 that triggers bash to interpret it as octal
+EXTRA_RUN_TIME=$(cat /dev/urandom | tr -dc '1-9' | fold -w 2 | head -n 1)
 echo RUN_TIME_SECONDS is $RUN_TIME_SECONDS
 echo EXTRA_RUN_TIME is $EXTRA_RUN_TIME
 echo EXTRA_RUN_TIME is added to avoid all instances termianting at the same time.
