@@ -36,7 +36,7 @@ trap shutdown TERM
 # The value will be between 0-9 seconds.
 # Using urandom since bash's $random will result in the same value
 # in every container instance.
-EXTRA_STARTUP_DELAY=$(cat /dev/urandom | tr -dc '0-9' | fold -w 1 | head -n 1)
+EXTRA_STARTUP_DELAY=$(cat /dev/urandom | tr -dc '1-9' | fold -w 1 | head -n 1)
 
 # STARTUP_DELAY_SECONDS is how long of a delay before starting NGINX. 
 # Health and readiness checks will fail during this time
