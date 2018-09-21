@@ -1,7 +1,8 @@
 {
   "env": {
     "STARTUP_DELAY_SECONDS": "15",
-    "RUN_TIME_SECONDS": "240"
+    "RUN_TIME_SECONDS": "240",
+    "SIGKILL_DELAY_SECONDS": "45"
   },
   "labels": {
     "HAPROXY_GROUP": "external",
