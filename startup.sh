@@ -64,7 +64,7 @@ fi
 EXTRA_RUN_TIME=$(cat /dev/urandom | tr -dc '1-9' | fold -w 2 | head -n 1)
 echo RUN_TIME_SECONDS is $RUN_TIME_SECONDS
 echo EXTRA_RUN_TIME is $EXTRA_RUN_TIME
-echo EXTRA_RUN_TIME is added to avoid all instances termianting at the same time.
+echo EXTRA_RUN_TIME is added to avoid all instances terminating at the same time.
 RUN_TIME_SECONDS=$((RUN_TIME_SECONDS + $EXTRA_RUN_TIME))
 echo "NGINX will be ran for $RUN_TIME_SECONDS seconds."
 

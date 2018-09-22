@@ -2,15 +2,11 @@
   "apiVersion": "V2",
   "name": "ssl-nginx-delayed",
   "count": 1,
-  "autoCertificate": true,
   "haproxy": {
     "frontends": [
       {
         "bindPort": 80,
         "protocol": "HTTP",
-        "certificates": [
-          "$AUTOCERT"
-        ],
         "linkBackend": {
           "defaultBackend": "ssl-nginx-delayed-http"
         }
@@ -35,11 +31,9 @@
           "serviceID": "/ssl-nginx-delayed"
         },
         "endpoint": {
-          "portName": "http",
-          "httpchkMiscStr": ["option httpchk GET /aaaa.html HTTP/1.0"]
-        },
-        "httpchkMiscStr": ["option httpchk GET /aaaa.html HTTP/1.0"]
-      }]
+          "portName": "http"
+        }
+       }]
     },
     {
       "name": "ssl-nginx-delayed-https",

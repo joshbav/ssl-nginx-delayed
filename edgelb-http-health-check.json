@@ -1,6 +1,6 @@
 {
   "apiVersion": "V2",
-  "name": "ssl-nginx-delayed",
+  "name": "ssl-nginx-delayed-http-health-check",
   "count": 1,
   "haproxy": {
     "frontends": [

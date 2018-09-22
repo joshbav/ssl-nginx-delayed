@@ -1,8 +1,8 @@
 {
   "env": {
+    "SIGKILL_DELAY_SECONDS": "45",
     "STARTUP_DELAY_SECONDS": "15",
-    "RUN_TIME_SECONDS": "240",
-    "SIGKILL_DELAY_SECONDS": "45"
+    "RUN_TIME_SECONDS": "240"
   },
   "labels": {
     "HAPROXY_GROUP": "external",
@@ -17,6 +17,9 @@
       {
         "containerPort": 80,
         "hostPort": 0,
+        "labels": {
+          "VIP_0": "/ssl-nginx-delayed:80"
+        },
         "protocol": "tcp",
         "servicePort": 10000,
         "name": "http"
@@ -24,6 +27,9 @@
       {
         "containerPort": 443,
         "hostPort": 0,
+        "labels": {
+          "VIP_1": "/ssl-nginx-delayed:443"
+        },
         "protocol": "tcp",
         "servicePort": 10001,
         "name": "https"
